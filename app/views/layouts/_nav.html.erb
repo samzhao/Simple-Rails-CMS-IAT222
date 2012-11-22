@@ -1,0 +1,9 @@
+<ul class="nav nav-pills pull-right">
+	<li <%= "class=active" if current_page?(root_path) %>><%= link_to "Home", root_path %></li>
+	<li <%= "class=active" if current_page?(about_path) %>><%= link_to "About", about_path %></li>
+	<li <%= "class=active" if current_page?(projects_path) %>><%= link_to "The Project", projects_path %></li>
+	
+	<% if !user_signed_in? %>
+		<li <%= "class=active" if current_page?(new_user_session_path) %>><%= link_to "Sign in", new_user_session_path %></li>
+	<% end %>
+</ul>
