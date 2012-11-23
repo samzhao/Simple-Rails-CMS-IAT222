@@ -5,9 +5,6 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -23,6 +20,7 @@ end
 gem 'jquery-rails'
 
 group :development do
+	gem 'sqlite3'
 	gem 'wirble'
 	gem 'hirb'
 	gem 'awesome_print'
@@ -30,6 +28,10 @@ group :development do
 	gem 'letter_opener'
 	gem 'quiet_assets'
 	gem 'bullet'
+end
+
+group :production do
+	gem 'pg'
 end
 
 gem 'devise'

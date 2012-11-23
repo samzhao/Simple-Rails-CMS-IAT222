@@ -40,3 +40,31 @@ h3.muted a:hover {
 	text-decoration: none;
 	color: #aaa;
 }
+
+.hint {
+	display: block;
+	color: #aaa;
+	margin-top: -10px;
+}
+
+.field_with_errors input {
+	border: 1px solid red;
+}
+
+.field_with_errors {
+	position: relative;
+}
+
+.error {
+	color: red;
+	position: absolute;
+	top: 30px;
+	left: 220px;
+	margin-left: 10px;
+}
+
+.carousel-control {
+	top: 50%;
+	line-height: 32px;
+	background: 0;
+}

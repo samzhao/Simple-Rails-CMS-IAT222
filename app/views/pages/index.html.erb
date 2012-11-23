@@ -1,0 +1,16 @@
+<h1>All Pages</h1>
+
+<% @pages.each do |page| %>
+  <ul>
+    <li><%= link_to page.title, permalink(page.name) %></li>
+    <ul>
+      <li><%= link_to 'Edit', edit_page_path(page) %></li>
+      <li><%= link_to 'Delete', page, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    </ul>
+  </ul>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Page', new_page_path %>

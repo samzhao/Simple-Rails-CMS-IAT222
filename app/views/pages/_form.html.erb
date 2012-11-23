@@ -1,0 +1,26 @@
+<%= simple_form_for(@page) do |f| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+      <% @page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.input :title, label: "Page title", placeholder: "title of the page" %>
+  </div>
+  <div class="field">
+    <%= f.input :name, label: "Page name", hint: "will be used for the url", placeholder: "http://example.com/page_name" %>
+  </div>
+  <div class="field">
+    <%= f.input :content, placeholder: "content of the page" %>
+  </div>
+  <div class="actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

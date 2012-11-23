@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Iat222</title>
+  <title><%= content_for?(:title) ? yield(:title)+" | IAT 222 Project" : "IAT 222 Project" %></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -9,14 +9,20 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= favicon_link_tag %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  
+  <%= yield(:head) %>
 </head>
 <body>
 	<div class="container-narrow">
+		<%= render 'layouts/msg' %>
+		<% if current_user && current_user.has_role?(:unauthorized) %>
+			<%= content_tag :div, "You can't edit the pages because your account is unauthorized.", class: "alert alert-error fade in" %>
+		<% end %>
 		<div class="masthead">
 			<%= render 'layouts/nav' %>
-			
 			<h3 class="muted"><%= link_to "Artsy Butterfly", root_path, class: "muted" %></h3>
 		</div>
 		
@@ -27,7 +33,15 @@
 		<hr>
 
 		<div class="footer">
-			<p>&copy;2012 - Team TWOTWOTWO</p>
+			<p>&copy;2012 - Team TWOTWOTWO 
+			<% if user_signed_in? %>
+				<span style="float:right; margin-left: 16px"><%= link_to "Account settings", edit_user_registration_path %></span>
+				<span style="float:right"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></span>
+			<% else %>
+				<span style="float:right; margin-left: 16px"><%= link_to "Sign in", new_user_session_path %></span>
+				<span style="float:right"><%= link_to "Sign up", new_user_registration_path %></span>
+			</p>
+			<% end %>
 		</div>
 	</div>    
 </body>
