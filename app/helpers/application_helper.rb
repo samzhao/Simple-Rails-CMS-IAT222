@@ -1,6 +1,6 @@
 module ApplicationHelper
 	def all_pages
-		pages = Page.all
+		Page.all
 	end
 
 	def permalink name
