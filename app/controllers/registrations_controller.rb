@@ -22,6 +22,17 @@ class RegistrationsController < Devise::RegistrationsController
 
 		def build_resource(*args)
 			super
-			resource.add_role(:unauthorized)
+			accepted_emails = %w[
+				historywhiz4k@gmail.com
+				amandamutsaerts@hotmail.com
+				hobby347@gmail.com
+				soeuna@sfu.ca
+				eshinep@sfu.ca
+			]
+			if accepted_emails.include? resource.email
+				resource.add_role(:user)
+			else
+				resource.add_role(:unauthorized)
+			end
 		end
 end
