@@ -3,9 +3,5 @@
 <ul>
 <% @users.each do |user| %>
 	<li><%= user.email %></li>
-	<%= simple_form_for user, url: user_registration_path(user) do |f| %>
-		<%= f.input :role_ids, collection: Role.all.delete_if {|i| i.name == "admin"}, as: :radio_buttons, label_method: lambda {|t| t.name.titleize}, label: false %>
-		<%= f.button :submit, "Grant access", class: "btn btn-primary" %>
-	<% end %>
 <% end %>
 </ul>
