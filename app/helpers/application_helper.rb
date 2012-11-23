@@ -1,5 +1,5 @@
 module ApplicationHelper
-	def pages
+	def all_pages
 		pages = Page.all
 	end
 

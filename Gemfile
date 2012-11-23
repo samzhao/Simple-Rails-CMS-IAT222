@@ -30,6 +30,8 @@ group :development do
 	gem 'bullet'
 end
 
+gem 'thin'
+
 group :production do
 	gem 'pg'
 	gem 'thin'
