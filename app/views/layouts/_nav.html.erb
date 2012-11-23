@@ -5,8 +5,10 @@
 		<li <%= "class=active" if current_page?(permalink(page.name)) %>><%= link_to page.title, permalink(page.name) %></li>
 	<% end %>
 	
-	<% if user_signed_in? && current_user.has_role?(:admin) %>
-		<li <%= "class=active" if current_page?(admin_path) %>><%= link_to "Admin", admin_path %></li>
+	<% if user_signed_in? %>
+		<% if current_user.has_role?(:admin) %>
+			<li <%= "class=active" if current_page?(admin_path) %>><%= link_to "Admin", admin_path %></li>
+		<% end %>
 		<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
 	<% end %>
 </ul>

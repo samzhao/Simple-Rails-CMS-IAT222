@@ -35,14 +35,15 @@
 		<div class="footer">
 			<p>&copy;2012 - Team TWOTWOTWO 
 			<% if user_signed_in? %>
-				<span style="float:right; margin-left: 16px">Logged in as <%= link_to current_user.email, edit_user_registration_path %></span>
-				<span style="float:right"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></span>
+				<span style="float:right">Logged in as <%= link_to current_user.email, edit_user_registration_path %></span>
 			<% else %>
 				<span style="float:right; margin-left: 16px"><%= link_to "Sign in", new_user_session_path %></span>
 				<span style="float:right"><%= link_to "Sign up", new_user_registration_path %></span>
 			</p>
 			<% end %>
 		</div>
+		
+		<%= debug params %>
 	</div>    
 </body>
 </html>
