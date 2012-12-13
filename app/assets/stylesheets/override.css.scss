@@ -1,5 +1,9 @@
 @import 'bootstrap';
 
+html, body {
+	overflow: auto;
+}
+
 body {
 	padding-top: 20px;
 	padding-bottom: 40px;
