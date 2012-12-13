@@ -1,14 +1,24 @@
 <% title @page.title %>
 
-<h1><%= @page.name %></h1>
+<h1><span id="page_name" class="mercury-region" data-mercury="full"><%= @page.name %></span></h1>
 
 <%# simple_format @page.content, {}, sanitize: false %>
 
-<%= markdown(@page.content) %>
+<div id="page_content" class="mercury-region" data-mercury="full">
+	<%= markdown(@page.content) %>
+</div>
 
 <% if user_signed_in? && !current_user.has_role?(:unauthorized) %>
 	<p>
-		<%= link_to 'Edit', edit_page_path(@page) %> |
-		<%= link_to 'Back', :back %>
+		<%# link_to 'Edit', edit_page_path(@page) %>
+		<%= link_to 'Edit', "/editor" + page_path(@page), id: "edit_link", data: {save_url: mercury_update_page_path(@page)} %> <span class="pipe">|</span>
+		<%= link_to 'Back', permalink(@page.name) %>
 	</p>
+
+	<script>
+		$(window).on('mercury:ready', function() {
+		  Mercury.saveUrl = <%= raw('"' + mercury_update_page_path(@page) + '"') %>;
+		  $('.pipe').hide();
+		});
+	</script>
 <% end %>
