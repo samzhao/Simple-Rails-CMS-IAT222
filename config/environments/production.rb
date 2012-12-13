@@ -66,5 +66,5 @@ Iat222::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Mercury config
-  config.assets.precompile += "jquery-1.7.js"
+  config.assets.precompile += %w(jquery-1.7.js)
 end
