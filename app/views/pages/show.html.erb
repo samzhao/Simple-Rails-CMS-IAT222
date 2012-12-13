@@ -2,7 +2,10 @@
 
 <h1><%= @page.name %></h1>
 
-<%= simple_format @page.content, {}, sanitize: false %>
+<%# simple_format @page.content, {}, sanitize: false %>
+
+<%= markdown(@page.content) %>
+
 <% if user_signed_in? && !current_user.has_role?(:unauthorized) %>
 	<p>
 		<%= link_to 'Edit', edit_page_path(@page) %> |
